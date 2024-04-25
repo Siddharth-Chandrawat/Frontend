@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+}
+
+.animated_card {
+  display: grid;
+  place-items: center;
+  position: relative;
+  height: 450px;
+  width: 350px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 0 auto; /* Center horizontally */
+}
+
+.card_background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  border-radius: 10px;
+  z-index: 0; /* Set z-index to place it underneath the phone image */
+}
+
+.phone_image {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.cinema_image {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.animated_card:before {
+  position: absolute;
+  content: '';
+  height: 100%; /* Adjusted height */
+  width: 100%; /* Adjusted width */
+  background: tomato;
+  border-radius: 10px; /* Adjusted border radius */
+  z-index: 0; /* Set z-index to place it underneath the phone image */
+  transition: 0.3s;
+  animation: animate 2s linear infinite;
+}
+
+.animated_card:hover::before {
+  height: calc(100% + 12px); /* Adjusted height */
+  width: calc(100% + 12px); /* Adjusted width */
+}
+
+@keyframes animate {
+  50% {
+    filter: hue-rotate(350deg);
+  }
+}
+
+.app-container {
+  display: grid;
+  grid-template-rows: auto auto; /* Two rows, first for Design and Preloader, second for content */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.text_under_card {
+  padding-top: 10px;
+  grid-row: 2; /* Place the text in the second row */
+  text-align: center;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF UI Display', 'Helvetica Neue', Arial, sans-serif; /* San Francisco font */
+  font-size: 20px; /* Adjust the font size as needed */
+  z-index: 0;
+}
